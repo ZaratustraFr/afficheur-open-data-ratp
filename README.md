@@ -9,16 +9,20 @@ Sous format web, il est accessible depuis n'importe quel écran, permettant ains
 
 Afin de pouvoir déployer la solution, veuillez suivre les étapes suivantes :
 
-# 1 - Inscription à l'API Open Data Temps Réel RATP
+## 1 - Inscription à l'API Open Data Temps Réel RATP
 - Suivre les instructions fournies à l'adresse suivante : https://data.ratp.fr/page/temps-reel/. Il est important de bien renseigner l'adresse IP du serveur qui exécutera les requêtes Open Data.
 
-# 2 - Placement des fichiers et droits d'accès
+## 2 - Placement des fichiers et droits d'accès
 - Placer les fichiers de sorte que **biv.php** soit à la racine du dossier que vous dédiez à la solution.
 - Donner les droits d'écriture à votre serveur web (**apache** par exemple) au fichier **/conf/lines.conf**.
-- Editer les deux variables $topbar_text et $stopinfo_text en haut du fichier **biv.php**.
+- Editer le contenue des deux variables $topbar_text et $stopinfo_text en haut du fichier **biv.php** :
+```
+$topbar_text = '$topbar_text - éditez moi dans <b>biv.php</b>';
+$stopinfo_text = '$stopinfo_text - éditez moi dans <b>biv.php</b>';
+```
 
-# 3 - Ajout des lignes à afficher
+## 3 - Ajout des lignes à afficher
 - Avec votre navigateur, accéder au fichier **biv.php**, puis cliquer sur l'icone Paramètres en haut à droite de la fenêtre. Vous pourrez ainsi rajouter des lignes à votre afficheur.
 
-# Bibliothèques externes utilisées
+## Bibliothèques externes utilisées
 -- todo.
