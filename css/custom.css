@@ -1,0 +1,83 @@
+.rerA {
+	background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMDAiIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiPjxjaXJjbGUgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRTkwMDJEIiBzdHJva2Utd2lkdGg9IjcwIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGN4PSI1MDAiIGN5PSI1MDAiIHI9IjQ2NSIvPjxwYXRoIGZpbGw9IiNFQzIyMkMiIGQ9Ik0yNjguMzYgNzE0LjY2bDExMi45LS4xMTMgMzAuMDI3LTkwLjgzNGgxNzYuODU5bDI5Ljc0IDkwLjgzNCAxMDQuMjUuMTEzLTE2OS4yMjktNDc4Ljk3aC0xMTQuNThsLTE2OS45NyA0NzguOTdtMTY4LjYzLTE2OS44Nmw0OS41NjEtMTUyLjY4OWM2LjY1LTIwLjQxNCAxMi4xMDEtNDUuMTQ4IDEyLjEwMS02MC4wNmwxLjU2NS0uMTUxYy0uMDc2IDE2LjI0NSA1Ljg1MSA0MS4xNzEgMTIuMTM3IDYwLjQzOGw0OS4xNDIgMTUyLjMxMS0xMjQuNTEuMTQ5LjAwNC4wMDJ6Ii8+PC9zdmc+) no-repeat transparent;
+	width: 100%;
+	height: 100%;
+	text-indent: 100%;
+	overflow: hidden;
+	display: inline-block;
+	cursor: pointer;
+	background-size: 100%;
+	border: none;
+	background-position: center;
+	border-radius: 5px;
+	color: white;
+}.rerB {
+	background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMDAiIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiPjxjaXJjbGUgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNDY4RkNDIiBzdHJva2Utd2lkdGg9IjcwIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGN4PSI1MDAiIGN5PSI1MDAiIHI9IjQ2NSIvPjxwYXRoIGZpbGw9IiM0NjhGQ0MiIGQ9Ik03MDUuMDggNTg4LjRjMC02Ny43MTMtNDEuMTUtMTA2Ljk2LTkyLjAyNy0xMTMuOTF2LTEuMjc1YzM3LjQwNC02LjgzNiA3Ni4zMTYtNDQuMTQ5IDc2LjMxNi05My41NTMgMC0xMDMuNjctOTUuMDM5LTEyMS4yOS0xNzIuODgtMTIxLjI5aC0xNzguODZ2NDc4LjM5SDUwOC45NGM5MC42NTktLjAxIDE5Ni4xNC0yNy44MTkgMTk2LjE0LTE0OC4zN20tMTE2LjAyMS0xOTQuNTJjMCA1NC45NjUtNTYuMTQ2IDU0LjIyOS05Mi4wMjYgNTQuMjI5aC01My4xNTRWMzM4LjM2Mmg1MS42MDljMzQuNDM5IDAgOTMuNTY5LTEuMzkxIDkzLjU2OSA1NS41MWguMDAyem05LjczIDE5MS43NGMwIDYyLjM4MS00My40MDggNzEuODgzLTkyLjc2IDcxLjg4M0g0NDMuOXYtMTMzLjQ5aDU2LjE0NWMzNS4xOCAwIDk4Ljc1IDIuMDggOTguNzUgNjEuNjFsLS4wMDYtLjAwM3oiLz48L3N2Zz4=) no-repeat transparent;
+	width: 100%;
+	height: 100%;
+	text-indent: 100%;
+	overflow: hidden;
+	display: inline-block;
+	cursor: pointer;
+	background-size: 100%;
+	border: none;
+	background-position: center;
+	border-radius: 5px;
+	color: white;
+}
+.indiceBulma {
+	-webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /*border-radius: 3px 0 0 3px;*/
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    line-height: 0;
+    position: relative;
+	text-align: center;
+	font-weight: bold;
+}
+.bd-tag {
+    background: #ffdd57;
+    border-radius: 0 0 3px 3px;
+    bottom: 100%;
+    color: rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    font-size: 7px;
+    font-weight: bold;
+    left: -1px;
+    letter-spacing: 1px;
+    padding: 3px 5px;
+    text-transform: uppercase;
+    vertical-align: top;
+	margin-left: 4px;
+}
+bulma-docs.css?…01712140909:83
+*:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+.is-line-info {
+	margin-left: 3rem;
+	margin-right: 3rem;
+}
+.is-margin-top {
+	margin-top: 0.1rem;
+}
+.is-line-info-left {
+	margin-left: 3rem;
+}
+.is-line-info-right {
+	margin-right: 0rem;
+}
+.padding1 {
+	padding: 1rem;
+}
+ h3 {
+	text-align: center;
+}
+
+.bootstrap-select {
+	width: 100% !important;
+}
