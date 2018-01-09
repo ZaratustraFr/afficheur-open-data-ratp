@@ -2,13 +2,10 @@
 date_default_timezone_set('Europe/Paris');
 header('Content-Type: application/json');
 
-
 $missions_to_catch = '2';
 $station_name = $_GET["station_name"];
 $code = $_GET["code"];
 $date = date("H:i");
-
-
 
 
 function getLine($line_code) {
@@ -23,7 +20,6 @@ function getLine($line_code) {
 			)
 		);
 	$line_requested = $client->getLines($request);
-	//print_r($line_requested);
 	$line_requested = (array)$line_requested->return;
 	if(!isset($line_requested[0])) {
 		$line[0]['id']   = $line_requested['id'];
@@ -40,7 +36,6 @@ function getLine($line_code) {
 			}
 		}
 	}
-	//print_r($line);
 	return($line);
 }
 
@@ -52,7 +47,6 @@ function getDirections($id) {
 				)
 			);	
 	$directions = (array)$client->getDirections($request)->return->directions;
-	//print_r($directions);
 	if(!isset($directions[0])) {
 		$retour[0]['name'] = $directions['name'];
 		$retour[0]['sens'] = $directions['sens'];
@@ -65,7 +59,6 @@ function getDirections($id) {
 			$retour[$i]['obj'] =  $directions[$i];
 		}
 	}
-	//print_r($retour);
 	return($retour);
 }
 
@@ -80,7 +73,6 @@ function getStations($id,$station_name) {
 				)
 			);
 	$station_requested = $client->getStations($request);
-	//print_r($station_requested);
 	if(!isset($station_requested)) {
 		$station_requested = 0;
 	}
@@ -112,7 +104,6 @@ function getStations($id,$station_name) {
 			}
 		}
 	}
-	//print_r($station);
 	return($station);
 }
 
@@ -123,28 +114,22 @@ function getMissionNext($station_id, $direction, $station, $sens) {
 				'direction' => array(
 					'sens' => $sens
 					),
-				'limit' => '4',
-				//'dateStart' => '201711281149'
+				'limit' => '4'
 				);	
-	//print_r($request);
 	$next_missions = (array)$client->getMissionsNext($request);
-	//print_r($next_missions);
 	$next_missions = $next_missions['return']->missions;
 	$nb = 0;
 	if(!is_array($next_missions)) {
 		$mission = $next_missions;
-		//print_r("là------------");
 		if(substr($mission->stationsDates[0],-4)-date("Hi")>=0) {
 			$retour[$nb]['time'] = substr($mission->stationsDates[0],-4);
 			$retour[$nb]['time_fmt'] = substr($mission->stationsDates[0],-4,2).':'.substr($mission->stationsDates[0],-2,2);
 			$retour[$nb]['time_str'] = substr($mission->stationsDates[0],-4)-date("Hi").' min';
 			$retour[$nb]['end'] = $mission->stations[1]->name;
 		}
-		//print_r("ici------------");
 	} else {
 		for($i=0;$i<sizeof($next_missions);$i++) {
 			$mission = $next_missions[$i];
-			//print_r($mission);
 			if(substr($mission->stationsDates[0],-4)-date("Hi")>=0) {
 				$retour[$nb]['time'] = substr($mission->stationsDates[0],-4);
 				$retour[$nb]['time_fmt'] = substr($mission->stationsDates[0],-4,2).':'.substr($mission->stationsDates[0],-2,2);
@@ -152,24 +137,14 @@ function getMissionNext($station_id, $direction, $station, $sens) {
 				$retour[$nb]['end'] = $mission->stations[1]->name;
 				$nb++;
 			}
-			//print_r($retour);
 		}
 	}
-	//print_r($retour);
 	return($retour);
 }
-/*
-function orderByTime($line) {
-	($myArray, function($a, $b) {
-    return $a['order'] - $b['order'];
-});
-}
-*/
+
 $line = getLine($code);
-//print_r($line);
 for($i=0;$i<sizeof($line);$i++) {
 	$line[$i]['directions'] = getDirections($line[$i]['id']);
-	//print_r($line[$i]);
 	if(isset($line[$i]['directions'])) {
 		$line[$i]['station'] = getStations($line[$i]['id'], $station_name);
 		for($j=0;$j<sizeof($line[$i]['directions']);$j++) {
@@ -182,34 +157,18 @@ for($i=0;$i<sizeof($line);$i++) {
 				$line[$i]['directions'][$j]['station_id'] = $line[$i]['station'][1]['id'];
 				$line[$i]['directions'][$j]['station_name'] = $line[$i]['station'][1]['station']['name'];
 				$line[$i]['directions'][$j]['station'] = $line[$i]['station'][1]['station'];
-			}
-			//print_r($line[$i]);			
-			//print_r("-----------------------");
-			//print_r($i);
-			
+			}			
 			if (isset( $line[$i]['directions'][$j]['station_id'])) {
 				$line[$i]['directions'][$j]['next_missions'] = getMissionNext($line[$i]['directions'][$j]['station_id'], $line[$i]['directions'][$j]['sens'], $line[$i]['directions'][$j]['station'], $line[$i]['directions'][$j]['sens'] );
-			}
-			//print_r($i);
-			//print_r("-----------------------");
-			//print_r($line);
-			
+			}			
 			if(isset($line[$i]['directions'][$j]['obj'])) unset($line[$i]['directions'][$j]['obj']);
 			if(isset($line[$i]['directions'][$j]['station'])) unset($line[$i]['directions'][$j]['station']);
-			
-			//print_r($line[$i]);
 		}
 		if (isset($line[$i]['station'])) unset($line[$i]['station']);
-		//print_r($line);
-		//print_r("------------------------------------------------------------------");
 	}
-	//print_r($line[$i]);
 }
-//print_r("------------------------------------------------------------------");
-//print_r($line);
-// si on a detecte plus d'une ligne, c'est qu'il y a des partiels, du coup on va tout regroupe sur la ligne 0
+
 if(sizeof($line)>1) {
-	
 	// on commence par blinder les index A et R de la premiere ligne
 	$Aindex = -1;
 	$Rindex = -1;
@@ -217,7 +176,6 @@ if(sizeof($line)>1) {
 		if($line[0]['directions'][$j]['sens'] == 'A') $Aindex = $j;
 		if($line[0]['directions'][$j]['sens'] == 'R') $Rindex = $j;
 	}
-	//print_r($line);
 	// on copie dans la ligne 0 avec les bonnes directions
 	for($i=1;$i<sizeof($line);$i++) {
 		for($j=0;$j<sizeof($line[$i]['directions']);$j++) {
@@ -227,12 +185,10 @@ if(sizeof($line)>1) {
 			}
 		}
 	}
-	//print_r($line);
 	// on supprime les lignes en trop
 	$line_tmp = $line[0];
 	$line = ''; $line[0] = $line_tmp;
 }
-//print_r($line);
 
 // Tri des passages par temps et pas par direction
 for($j=0;$j<sizeof($line[0]['directions']);$j++) {
@@ -241,7 +197,7 @@ for($j=0;$j<sizeof($line[0]['directions']);$j++) {
 		return $a['time'] - $b['time'];
 	});
 }
-//print_r($line);
+
 // Suppression des doublons
 for($j=0;$j<sizeof($line[0]['directions']);$j++) {
 	$before = null;
@@ -255,11 +211,8 @@ for($j=0;$j<sizeof($line[0]['directions']);$j++) {
 		$before = $line[0]['directions'][$j]['next_missions'][$k]['time'];
 	}
 	for($l=sizeof($to_unset)-1;$l>=0;$l--) {
-		//unset($line[0]['directions'][$j]['next_missions'][$to_unset[$l]]);
 		array_splice($line[0]['directions'][$j]['next_missions'], $to_unset[$l], 1);
 	}	
 }
-//print_r($line);
 echo json_encode($line[0], JSON_PRETTY_PRINT);
-
 ?>
