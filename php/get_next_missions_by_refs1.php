@@ -192,10 +192,11 @@ if(sizeof($line)>1) {
 
 // Tri des passages par temps et pas par direction
 for($j=0;$j<sizeof($line[0]['directions']);$j++) {
-	
-	usort($line[0]['directions'][$j]['next_missions'], function($a, $b) {
-		return $a['time'] - $b['time'];
-	});
+	if ($line[0]['directions'][$j]['next_missions']!=null) {
+		usort($line[0]['directions'][$j]['next_missions'], function($a, $b) {
+			return $a['time'] - $b['time'];
+		});
+	}
 }
 
 // Suppression des doublons
