@@ -4,7 +4,7 @@ Il consulte directement l'API Open Data Temps Réel RATP (https://data.ratp.fr/p
 
 Sous format web, il est accessible depuis n'importe quel écran, permettant ainsi de donner des informations pertinentes et constamment mise à jour. Voici un exemple du rendu actuel (version 1.3) :
 
-![alt text](https://zaratustra.fr/github/capt/capture.png)
+![alt text](https://zaratustra.fr/github/afficheur-open-data-ratp/capt/capture.png)
 
 
 Afin de pouvoir déployer la solution, veuillez suivre les étapes suivantes :
